@@ -1,0 +1,112 @@
+/* Custom Properties for easy maintenance and consistent theming */
+:root {
+    --text-primary: #1a1a1a; /* High contrast against white */
+    --background: #ffffff;
+    --link-color: #0056b3;
+    --link-hover: #003d82;
+    --focus-ring: #ffbf47;
+}
+
+/* Performance: Minimal reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Performance: Using fast-loading system fonts instead of external web fonts */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--background);
+    line-height: 1.6;
+    padding: 1rem;
+}
+
+/* Accessibility: Skip link hidden visually but available on keyboard focus */
+.skip-link {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    z-index: 100;
+    transition: top 0.2s ease;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Accessibility: Clear focus outlines for keyboard navigation */
+*:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
+/* Semantic element layout */
+header, main, footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover, a:focus {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+h1, h2 {
+    margin: 1.5rem 0 1rem;
+    line-height: 1.2;
+}
+
+/* Performance: Responsive images that don't break containers */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--link-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: var(--link-hover);
+}
+
+/* Accessibility: Respect OS-level "Reduce Motion" settings */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
